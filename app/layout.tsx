@@ -1,49 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
-
-export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
-  },
-}
-
-export const viewport: Viewport = {
-  colorScheme: 'light dark',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
-}
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
-  return (
-    <html lang="en">
-      <body className="antialiased">
-        {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
-      </body>
-    </html>
-  )
-}
+export const metadata: Metadata = { title: { default: 'ClarityMed — Medical language, made clear', template: '%s | ClarityMed' }, description: 'Turn confusing medical documents into plain-language explanations and thoughtful questions for your doctor.', generator: 'v0.app', openGraph: { title: 'ClarityMed — Medical language, made clear', description: 'Understand your medical documents with more confidence.', type: 'website' } }
+export const viewport: Viewport = { colorScheme: 'light', themeColor: '#f5f9f8', userScalable: true }
+export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en" className="bg-background"><body className="antialiased">{children}{process.env.NODE_ENV==='production'&&<Analytics/>}</body></html>}
